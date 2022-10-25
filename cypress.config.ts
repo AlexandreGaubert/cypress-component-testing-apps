@@ -5,7 +5,6 @@ export default defineConfig({
     video: false,
     viewportHeight: 1080,
     viewportWidth: 1080,
-    reporter: 'list',
     numTestsKeptInMemory: 5,
     devServer: {
       framework: 'create-react-app',
