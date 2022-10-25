@@ -1,0 +1,19 @@
+name: Continuous Integration
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  front:
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.1.0
+      - uses: actions/setup-node@v3
+        with:
+          cache: npm
+          node-version: 16
+      - run: |
+          npm ci
+          npm run cy:comp
