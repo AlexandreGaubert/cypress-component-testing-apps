@@ -1,11 +1,12 @@
+/* eslint-disable react/function-component-definition */
 import React from 'react';
 
 interface InputFieldProps
   extends React.DetailedHTMLProps<
-      React.InputHTMLAttributes<HTMLInputElement>,
-      HTMLInputElement
-    >,
-    React.AriaAttributes {
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+  >,
+  React.AriaAttributes {
   name: string;
   label: string;
   submitted: boolean;
@@ -13,7 +14,9 @@ interface InputFieldProps
 }
 
 const InputField: React.FC<InputFieldProps> = (props) => {
-  const { className, label, submitted, requiredMessage, ...inputProps } = props;
+  const {
+    className, label, submitted, requiredMessage, ...inputProps
+  } = props;
   return (
     <label className="flex flex-col text-lg text-gray-800 mb-2">
       {label}:

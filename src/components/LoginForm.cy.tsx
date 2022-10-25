@@ -1,8 +1,9 @@
+/* eslint-disable react/react-in-jsx-scope */
 import LoginForm from './LoginForm';
 
 describe('LoginForm', () => {
   it('should mount the component', () => {
-    cy.mount(<LoginForm onLogin={() => { }}/>);
+    cy.mount(<LoginForm onLogin={() => { }} />);
   });
 
   it('should have password input of type password', () => {

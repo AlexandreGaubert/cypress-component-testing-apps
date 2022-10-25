@@ -1,16 +1,18 @@
 import React from 'react';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { worker } from './mocks';
 
-import { createRoot } from 'react-dom/client';
-const container = document.getElementById('app');
-const root = createRoot(container!);
-root.render(
+import './index.css';
+
+import ReactDOM from 'react-dom';
+
+import App from './App';
+import { worker } from './mocks';
+import reportWebVitals from './reportWebVitals';
+
+ReactDOM.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById('app'),
 );
 
 // Start a mock API server to handle auth requests

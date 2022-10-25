@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import Button from './Button';
 
 describe('Button', () => {
@@ -6,5 +7,4 @@ describe('Button', () => {
 
     cy.get('button').contains('Click Me');
   });
-
 });

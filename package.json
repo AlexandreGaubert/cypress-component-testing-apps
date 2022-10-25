@@ -1,34 +1,123 @@
 {
-  "name": "cra-ts",
+  "name": "mergify-dashboard",
   "version": "0.1.0",
+  "proxy": "http://127.0.0.1:5001",
   "private": true,
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.0.1",
     "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.4.1",
-    "@types/node": "^16.11.27",
-    "@types/react": "^18.0.5",
-    "@types/react-dom": "^18.0.1",
-    "cypress": "^10.0.0",
     "msw": "^0.39.2",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.6.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@datadog/datadog-ci": "^1.16.0",
+    "@emotion/styled": "^11.10.4",
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-brands-svg-icons": "^6.2.0",
+    "@fortawesome/free-regular-svg-icons": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@mui/material": "^5.10.10",
+    "@octokit/openapi-types": "^14.0.0",
+    "@octokit/plugin-retry": "^3.0.9",
+    "@octokit/rest": "^19.0.5",
+    "@octokit/types": "^8.0.0",
+    "@popperjs/core": "^2.11.6",
+    "@sentry/browser": "^7.14.2",
+    "@sentry/react": "^7.16.0",
+    "@sentry/webpack-plugin": "^1.19.1",
+    "@types/jest": "^29.2.0",
+    "@types/node": "^18.7.9",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "@types/react-router-hash-link": "^2.4.5",
+    "ace-builds": "^1.12.3",
+    "bootstrap": "5.2.2",
+    "classnames": "^2.3.2",
+    "console-log-level": "^1.4.1",
+    "cypress": "^10.7.0",
+    "d3-scale-chromatic": "^3.0.0",
+    "date-fns": "^2.29.3",
+    "dayjs": "^1.11.5",
+    "formik": "^2.2.9",
+    "jquery": "^3.6.1",
+    "js-base64": "^3.7.2",
+    "js-yaml": "^4.1.0",
+    "lodash": "^4.17.21",
+    "nock": "^13.2.9",
+    "prop-types": "^15.8.1",
+    "react": "^17.0.2",
+    "react-ace": "^10.1.0",
+    "react-bootstrap": "^2.5.0",
+    "react-date-range": "^1.4.0",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "react-query": "^3.39.2",
+    "react-router": "^6.2.1",
+    "react-router-bootstrap": "^0.26.2",
+    "react-router-dom": "^6.4.2",
+    "react-router-hash-link": "^2.4.3",
+    "react-select": "^5.5.4",
+    "react-side-effect": "^2.1.2",
+    "react-table": "^7.8.0",
+    "recharts": "^2.1.15",
+    "sass": "^1.55.0",
+    "three-dots": "^0.2.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "BROWSER='none' react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!(d3.*|internmap|react-date-range)/)\" --colors --testURL=http://[::1]:5001",
+    "eslint": "eslint src",
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "cy:open": "TZ=UTC cypress open",
+    "cy:run": "TZ=UTC cypress run",
+    "cy:comp": "TZ=UTC cypress run --component"
+  },
+  "jestConfig": {
+    "transformIgnorePatterns": []
   },
   "eslintConfig": {
+    "env": {
+      "browser": true,
+      "jest": true
+    },
+    "parserOptions": {
+      "project": [
+        "./tsconfig.json",
+        "./cypress/tsconfig.json"
+      ]
+    },
     "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+      "airbnb",
+      "airbnb-typescript",
+      "plugin:import/recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings"
+    ],
+    "rules": {
+      "import/order": [
+        "error",
+        {
+          "newlines-between": "always-and-inside-groups",
+          "alphabetize": {
+            "order": "asc"
+          }
+        }
+      ],
+      "jsx-a11y/click-events-have-key-events": "off",
+      "jsx-a11y/no-static-element-interactions": "off",
+      "jsx-a11y/no-autofocus": "off",
+      "jsx-a11y/label-has-associated-control": "off",
+      "react/jsx-one-expression-per-line": "off",
+      "react/jsx-props-no-spreading": "off",
+      "react/jsx-filename-extension": "off",
+      "@typescript-eslint/require-default-props": "off"
+    }
   },
   "browserslist": {
     "production": [
@@ -42,10 +131,36 @@
       "last 1 safari version"
     ]
   },
+  "resolutions": {
+    "mini-css-extract-plugin": "2.4.7"
+  },
   "devDependencies": {
     "autoprefixer": "^10.4.4",
     "postcss": "^8.4.12",
-    "tailwindcss": "^3.0.24"
+    "tailwindcss": "^3.0.24",
+    "@sentry/cli": "^2.7.0",
+    "@testing-library/dom": "^8.19.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^12.1.5",
+    "@types/d3-scale-chromatic": "^3.0.0",
+    "@types/intercom-web": "^2.8.19",
+    "@types/lodash": "^4.14.186",
+    "@types/react-date-range": "^1.4.4",
+    "@types/react-helmet": "^6.1.5",
+    "eslint": "^8.26.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "fast-text-encoding": "^1.0.6",
+    "history": "^5.3.0",
+    "jest-extended": "^3.1.0",
+    "react-scripts": "^5.0.1",
+    "react-test-renderer": "^17.0.2",
+    "source-map-explorer": "^2.5.3",
+    "typescript": "^4.8.4"
   },
   "msw": {
     "workerDirectory": "public"

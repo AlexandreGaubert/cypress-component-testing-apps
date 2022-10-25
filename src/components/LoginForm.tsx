@@ -1,4 +1,7 @@
+/* eslint-disable react/function-component-definition */
+/* eslint-disable react/require-default-props */
 import React, { useState } from 'react';
+
 import Button from './Button';
 import InputField from './InputField';
 

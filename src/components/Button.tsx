@@ -1,12 +1,14 @@
+/* eslint-disable react/button-has-type */
 import React from 'react';
 
 interface ButtonProps
   extends React.DetailedHTMLProps<
-      React.ButtonHTMLAttributes<HTMLButtonElement>,
-      HTMLButtonElement
-    >,
-    React.AriaAttributes {}
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+  >,
+  React.AriaAttributes {}
 
+// eslint-disable-next-line react/function-component-definition
 const Button: React.FC<ButtonProps> = (props) => {
   const { className, children, ...rest } = props;
   return (

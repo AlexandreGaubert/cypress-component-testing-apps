@@ -7,13 +7,12 @@ export const handlers = [
       const { username, password } = req.body;
       if (username === 'testuser' && password === 'testpassword') {
         return res(ctx.status(200), ctx.json({ message: 'Authenticated' }));
-      } else {
-        return res(
-          ctx.status(401),
-          ctx.json({ message: 'Bad username or password' })
-        );
       }
-    }
+      return res(
+        ctx.status(401),
+        ctx.json({ message: 'Bad username or password' }),
+      );
+    },
   ),
 ];
 

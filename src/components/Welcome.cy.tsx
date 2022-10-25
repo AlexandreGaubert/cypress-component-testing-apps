@@ -1,3 +1,5 @@
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable @typescript-eslint/comma-dangle */
 import Welcome from './Welcome';
 
 describe('Welcome', () => {

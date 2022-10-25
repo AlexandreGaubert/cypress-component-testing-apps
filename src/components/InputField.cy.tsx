@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import InputField from './InputField';
 
 describe('InputField', () => {
@@ -8,7 +9,7 @@ describe('InputField', () => {
         label="Name"
         requiredMessage="Name is required"
         submitted={false}
-      />
+      />,
     );
     cy.get('label').contains('Name');
   });
@@ -18,13 +19,12 @@ describe('InputField', () => {
       <InputField
         name="name"
         label="Name"
-        value={''}
+        value=""
         requiredMessage="Name is required"
-        submitted={true}
+        submitted
         onChange={cy.spy()}
-      />
+      />,
     );
     cy.contains('Name is required');
   });
-
 });
