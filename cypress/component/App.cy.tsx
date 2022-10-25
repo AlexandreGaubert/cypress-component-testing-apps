@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import App from './App';
+import App from '../../src/App';
 
 describe('LoginForm', () => {
   it('should redirect to welcome screen when creds are correct', () => {

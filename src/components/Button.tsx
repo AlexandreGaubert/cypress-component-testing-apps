@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react/button-has-type */
+import { Tooltip } from '@mui/material';
 import React from 'react';
 
 interface ButtonProps
@@ -12,8 +14,9 @@ interface ButtonProps
 const Button: React.FC<ButtonProps> = (props) => {
   const { className, children, ...rest } = props;
   return (
-    <button
-      className={`
+    <Tooltip title="button">
+      <button
+        className={`
               py-2
               px-6
               rounded-sm
@@ -27,10 +30,11 @@ const Button: React.FC<ButtonProps> = (props) => {
               disabled:cursor-not-allowed
               ${className}
             `}
-      {...rest}
-    >
-      {children}
-    </button>
+        {...rest}
+      >
+        {children as any}
+      </button>
+    </Tooltip>
   );
 };
 

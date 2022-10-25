@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import LoginForm from './LoginForm';
+import LoginForm from '../../src/components/LoginForm';
 
 describe('LoginForm', () => {
   it('should mount the component', () => {

@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import Button from './Button';
+import Button from '../../src/components/Button';
 
 describe('Button', () => {
   it('should mount', () => {

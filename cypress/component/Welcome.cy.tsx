@@ -1,18 +1,19 @@
 /* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable @typescript-eslint/comma-dangle */
-import Welcome from './Welcome';
+import React from 'react';
+
+import Welcome from '../../src/components/Welcome';
 
 describe('Welcome', () => {
   it('should mount with greeting', () => {
     cy.mount(
-      <Welcome username="Test User" onLogout={cy.spy().as('onLogout')} />
+      <Welcome username="Test User" onLogout={cy.spy().as('onLogout')} />,
     );
     cy.contains('Welcome Test User!');
   });
 
   it('when the log out button is clicked, onLogout should be called', () => {
     cy.mount(
-      <Welcome username="Test User" onLogout={cy.spy().as('onLogout')} />
+      <Welcome username="Test User" onLogout={cy.spy().as('onLogout')} />,
     );
     cy.get('button').contains('Log Out').click();
     cy.get('@onLogout').should('have.been.called');

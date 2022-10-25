@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import InputField from './InputField';
+import InputField from '../../src/components/InputField';
 
 describe('InputField', () => {
   it('should mount with label', () => {
