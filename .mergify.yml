@@ -1,0 +1,6 @@
+merge_protections:
+  - name: qdqsdqsd
+    success_conditions:
+      - "#added-files=2"
+    if:
+      - "title ~= ^(fix|feat|docs|style|refactor|perf|test|build|ci|chore|revert)(?:\\(.+\\))?:"
